@@ -2,11 +2,11 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-COPY backend/pom.xml ./pom.xml
-COPY backend/src ./src
+# Copy contents of the backend folder (because Dockerfile is already inside backend)
+COPY ./pom.xml ./pom.xml
+COPY ./src ./src
 
 RUN mvn clean package -DskipTests
-
 
 FROM eclipse-temurin:17
 
